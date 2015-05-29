@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/sitemesh">
+    <decorator name="empty" page="empty.jsp"/>
+    <decorator name="default" page="default.jsp"/>
+    <excludes>
+        <pattern>*.html*</pattern>
+        <pattern>*.json*</pattern>
+        <pattern>*.xml*</pattern>
+        <pattern>*.download*</pattern>
+    </excludes>
+</decorators>
+
