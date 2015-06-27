@@ -17,6 +17,9 @@
             http://www.springframework.org/schema/cache/spring-cache.xsd">
 
    
+    <!--
+        Internationalization (not used here)
+    -->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages/messages"/>
     </bean>
@@ -61,6 +64,9 @@
         </bean>
     </mvc:interceptors>
 
+    <!--
+        Configuration for File Uploads. (not used here)
+    -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- max upload size in bytes -->

@@ -17,8 +17,16 @@
             http://www.springframework.org/schema/security
             http://www.springframework.org/schema/security/spring-security-3.2.xsd">   
       
+    
+    <!--
+        Which package is used to define our database repositories?
+    -->
     <jpa:repositories base-package="com.mycompany.repository"/>
     
+    
+    <!--
+        Database Configuration
+    -->
     <bean id="dataSource_postgres" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url" value="jdbc:postgresql://localhost/demoplanb"/>
@@ -26,6 +34,11 @@
         <property name="password" value="db"/>
     </bean>
     
+    
+    
+    <!--
+        EclipseLink Configuration (similar to Hibernate)
+    -->
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource_postgres"/>
@@ -37,6 +50,9 @@
 
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+                <!--
+                    Which Database Dialect? 
+                -->
                 <property name="databasePlatform" value="org.eclipse.persistence.platform.database.PostgreSQLPlatform" />
                 <property name="showSql" value="false" />
                 <property name="generateDdl" value="true"/>
@@ -47,10 +63,8 @@
     
     <bean class="org.springframework.orm.jpa.JpaTransactionManager"
           id="transactionManager">
-        <property name="entityManagerFactory"
-                  ref="entityManagerFactory"/>
-        <property name="jpaDialect">
-            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="jpaDialect"> <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
         </property>
     </bean>
 

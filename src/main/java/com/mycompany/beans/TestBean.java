@@ -11,8 +11,8 @@ import javax.persistence.Id;
  * 
  * @author mbr
  */
-@Entity
-public class TestBean implements Serializable{
+@Entity // JPA Info: This is a database entity
+public class TestBean implements Serializable { // Standard bean logic
     
     @Id //Primary Key
     @GeneratedValue(strategy = GenerationType.AUTO) // Datenbank macht Inkrementierung
